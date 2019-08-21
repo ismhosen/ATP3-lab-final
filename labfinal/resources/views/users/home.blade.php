@@ -25,7 +25,7 @@ ALL post
                 <td>Place Name</td>
                 <td>Place Route</td>
                 <td>Place Description</td>
-                {{-- <td>COmment</td> --}}
+                <td>COmment</td>
                 <td>ADD comment</td>
             </tr>
         </thead>
@@ -35,6 +35,7 @@ ALL post
                     <td>{{$scout->place_name}}</td>
                     <td>{{$scout->place_route}}</td>
                     <td>{{$scout->place_descripttion}}</td>
+                    <td><a href="{{route('seeComment',$scout->id)}}">click to see comment</a></td>
                     {{-- <td>
                         @foreach ($scout->comment as $item)
                             
@@ -44,6 +45,7 @@ ALL post
                         <form action="{{route('user.addComment')}}" method="post">
                             @csrf
                             <input type="hidden" name="scout_id" value="{{$scout->id}}">
+                            {{-- <input type="hidden" name="user_id" value="{{$scout->id}}"> --}}
                             <textarea name="comment" id="" cols="30" rows="10"></textarea>
                             <input type="submit" value="Submit">
                         </form>

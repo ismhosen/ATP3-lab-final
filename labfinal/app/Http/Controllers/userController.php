@@ -18,6 +18,7 @@ class userController extends Controller
         // dd($req->all());
         $comment=new Comment;
         $comment->scout_id=$req->scout_id;
+        $comment->user_id=Auth::user()->id;
         $comment->comment=$req->comment;
         $comment->save();
         return redirect()->back();

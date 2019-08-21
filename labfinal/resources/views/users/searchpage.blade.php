@@ -24,7 +24,7 @@ SEarch Result <br><br>
                 <td>Place Name</td>
                 <td>Place Route</td>
                 <td>Place Description</td>
-                {{-- <td>COmment</td> --}}
+                <td>COmment</td>
                 <td>ADD comment</td>
             </tr>
         </thead>
@@ -34,6 +34,7 @@ SEarch Result <br><br>
                     <td>{{$scout->place_name}}</td>
                     <td>{{$scout->place_route}}</td>
                     <td>{{$scout->place_descripttion}}</td>
+                    <td><a href="{{route('seeComment')}}">click to see comment</a></td>
                     {{-- <td>
                         @foreach ($scout->comment as $item)
                             

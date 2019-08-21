@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/requestToAdmin/{id}', 'scoutController@requestToAdmin')->name('scoute.requestToAdmin');
     });
     Route::get('/profile/{id}', 'commonController@profile')->name('profile');
+    Route::get('/seeComment/{id}', 'commonController@seeComment')->name('seeComment');
     
 
 });
