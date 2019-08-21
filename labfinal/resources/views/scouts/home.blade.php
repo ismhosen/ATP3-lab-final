@@ -33,6 +33,7 @@ Own post
                 <td>Place Name</td>
                 <td>Place Route</td>
                 <td>Place Description</td>
+                <td>Status</td>
                 <td>Edit</td>
             </tr>
         </thead>
@@ -42,6 +43,7 @@ Own post
                     <td>{{$scout->place_name}}</td>
                     <td>{{$scout->place_route}}</td>
                     <td>{{$scout->place_descripttion}}</td>
+                    <td>{{$scout->status}}</td>
                     <td><a href="{{route('scoute.requestToAdmin',$scout->id)}}">edit</a></td>
 
                 </tr>
@@ -60,6 +62,7 @@ ALL post
                 <td>Place Name</td>
                 <td>Place Route</td>
                 <td>Place Description</td>
+                <td>Status</td>
             </tr>
         </thead>
         <tbody>
@@ -68,6 +71,7 @@ ALL post
                     <td>{{$scout->place_name}}</td>
                     <td>{{$scout->place_route}}</td>
                     <td>{{$scout->place_descripttion}}</td>
+                    <td>{{$scout->status}}</td>
                 </tr>
             @endforeach
 

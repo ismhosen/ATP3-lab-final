@@ -97,14 +97,18 @@
                 <td>Place Name</td>
                 <td>Place Route</td>
                 <td>Place Description</td>
+                <td>Change Accept</td>
+                <td>Change Reject</td>
             </tr>
         </thead>
         <tbody>
-            @foreach ($scouts as $scout)
+            @foreach ($scoutsRequest as $s)
                 <tr>
-                    <td>{{$scout->place_name}}</td>
-                    <td>{{$scout->place_route}}</td>
-                    <td>{{$scout->place_descripttion}}</td>
+                    <td>{{$s->place_name}}</td>
+                    <td>{{$s->place_route}}</td>
+                    <td>{{$s->place_descripttion}}</td>
+                    <td><a href="{{route('admin.postEditAcceptByadmin',$s->id)}}">Accept</a></td>
+                    <td><a href="{{route('admin.postEditRejectByadmin',$s->id)}}">Reject</a></td>
                 </tr>
             @endforeach
 

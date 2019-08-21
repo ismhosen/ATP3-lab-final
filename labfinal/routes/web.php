@@ -29,6 +29,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/postPublishByadmin/{id}', 'adminController@postPublishByadmin')->name('admin.postPublishByadmin');
         Route::get('/postEditByadmin/{id}', 'adminController@postEditByadmin')->name('admin.postEditByadmin');
         Route::get('/postDeleteByadmin/{id}', 'adminController@postDeleteByadmin')->name('admin.postDeleteByadmin');
+        Route::get('/postEditAcceptByadmin/{id}', 'adminController@postEditAcceptByadmin')->name('admin.postEditAcceptByadmin');
+        Route::get('/postEditRejectByadmin/{id}', 'adminController@postEditRejectByadmin')->name('admin.postEditRejectByadmin');
+        Route::post('/editPost', 'adminController@editPost')->name('admin.editPost');
         // Route::get('/users', 'adminController@users')->name('admin.users');
         // Route::get('/users/add/{id}', 'adminController@usersAdd')->name('admin.usersAdd');
         // Route::get('/users/block/{id}', 'adminController@usersBlock')->name('admin.usersBlock');
@@ -45,6 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::prefix('users')->group(function(){
         Route::get('/', 'userController@index')->name('user.index');
+        Route::post('/', 'userController@addComment')->name('user.addComment');
+        Route::post('/searchplaces', 'userController@searchplaces')->name('user.searchplaces');
     });
     Route::prefix('scout')->group(function(){
         Route::get('/', 'scoutController@index')->name('scout.index');

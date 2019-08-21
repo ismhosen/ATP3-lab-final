@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">	
 
+
 <a class="" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -8,18 +9,16 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-                <br>
-                <font size="5">{{Auth::user()->name}}</font>
-                <hr>
-<hr>
-    <form action="{{route('user.searchplaces')}}" method="post">
-        @csrf
-        <input type="text" name="str" id=""><input type="submit" value="search">
-    </form>
-<hr>    
-ALL post
+
 <br>
-    <table class="table">
+            <a href="{{route('user.index')}}">Home</a><br><br>
+<font size="5">{{Auth::user()->name}}</font>
+<hr>
+
+SEarch Result <br><br>
+
+@if (count($results)>0)
+<table class="table">
         <thead>
             <tr>
                 <td>Place Name</td>
@@ -30,7 +29,7 @@ ALL post
             </tr>
         </thead>
         <tbody>
-            @foreach ($scouts as $scout)
+            @foreach ($results as $scout)
                 <tr>
                     <td>{{$scout->place_name}}</td>
                     <td>{{$scout->place_route}}</td>
@@ -53,5 +52,9 @@ ALL post
 
         </tbody>
     </table>
+@else
+    no result found
+@endif
 
-    <hr>
+
+<hr>
