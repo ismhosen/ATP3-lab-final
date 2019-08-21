@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/addUsers', 'adminController@addUsers')->name('admin.addUsers');
         Route::get('/statusActive/{id}', 'adminController@statusActive')->name('admin.statusActive');
         Route::get('/statusBlock/{id}', 'adminController@statusBlock')->name('admin.statusBlock');
+        Route::get('/postPublishByadmin/{id}', 'adminController@postPublishByadmin')->name('admin.postPublishByadmin');
+        Route::get('/postEditByadmin/{id}', 'adminController@postEditByadmin')->name('admin.postEditByadmin');
+        Route::get('/postDeleteByadmin/{id}', 'adminController@postDeleteByadmin')->name('admin.postDeleteByadmin');
         // Route::get('/users', 'adminController@users')->name('admin.users');
         // Route::get('/users/add/{id}', 'adminController@usersAdd')->name('admin.usersAdd');
         // Route::get('/users/block/{id}', 'adminController@usersBlock')->name('admin.usersBlock');
@@ -45,6 +48,9 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::prefix('scout')->group(function(){
         Route::get('/', 'scoutController@index')->name('scout.index');
+        Route::post('/', 'scoutController@addpost')->name('scout.addpost');
+        Route::post('/requestToAdmin', 'scoutController@PostrequestToAdmin')->name('scout.PostrequestToAdmin');
+        Route::get('/requestToAdmin/{id}', 'scoutController@requestToAdmin')->name('scoute.requestToAdmin');
     });
     Route::get('/profile/{id}', 'commonController@profile')->name('profile');
     

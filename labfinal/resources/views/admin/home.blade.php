@@ -54,5 +54,61 @@
         
     </tbody>
  </table>
-
  <hr>
+
+ ALL post
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Place Name</td>
+                <td>Place Route</td>
+                <td>Place Description</td>
+                <td>Status</td>
+                <td>publish</td>
+                <td>Edit</td>
+                <td>Delete</td>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($scouts as $scout)
+                <tr>
+                    <td>{{$scout->place_name}}</td>
+                    <td>{{$scout->place_route}}</td>
+                    <td>{{$scout->place_descripttion}}</td>
+                    <td>{{$scout->status}}</td>
+                    <td><a href="{{route('admin.postPublishByadmin',$scout->id)}}">publish</a></td>
+                    <td><a href="{{route('admin.postEditByadmin',$scout->id)}}">edit</a></td>
+                    <td><a href="{{route('admin.postDeleteByadmin',$scout->id)}}">Delete</a></td>
+                </tr>
+            @endforeach
+
+        </tbody>
+    </table>
+
+    <hr>
+
+   Edit Requested post
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Place Name</td>
+                <td>Place Route</td>
+                <td>Place Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($scouts as $scout)
+                <tr>
+                    <td>{{$scout->place_name}}</td>
+                    <td>{{$scout->place_route}}</td>
+                    <td>{{$scout->place_descripttion}}</td>
+                </tr>
+            @endforeach
+
+        </tbody>
+    </table>
+
+    <hr>

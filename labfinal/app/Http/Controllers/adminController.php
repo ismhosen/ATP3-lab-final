@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\User;
+use App\Scout;
+use App\ScoutRequest;
 
 class adminController extends Controller
 {
     public function index(){
         $users=User::all();
-        return view('admin.home')->with(['users'=>$users]);
+        $scouts=Scout::all();
+        $scoutsRequest=ScoutRequest::all();
+        return view('admin.home')->with(['users'=>$users,'scouts'=>$scouts,'scouts'=>$scoutsRequest]);
     }
     public function newUsers()
     {
@@ -45,5 +49,11 @@ class adminController extends Controller
         $user->save();
         return redirect()->back();
 
+    }
+    public function postPublishByadmin($id){
+        $scout=Scout::find($id);
+        $scout->status="active";
+        $scout->save();
+        return redirect()->back();
     }
 }
