@@ -28,7 +28,20 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        // dd($user);
+        if ( Auth::user()->type == 'admin' ) {// do your margic here
+            return route('admin.index');
+        }
+        else if ( Auth::user()->type == 'user' ) {// do your margic here
+            return route('photographer.index');
+        }
+        else if ( Auth::user()->type == 'scout' ) {// do your margic here
+            return route('client.index');
+        }
+        return redirect('/home');
+    }
 
     /**
      * Create a new controller instance.
@@ -51,8 +64,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:3', 'confirmed'],
+            // 'password' => ['required', 'string', 'min:3', 'confirmed'],
+            'address' => ['required', 'string'],
         ]);
+
     }
 
     /**
@@ -63,10 +78,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'address' => $data['address'],
+            'type' => $data['type'],
+
         ]);
     }
 }
