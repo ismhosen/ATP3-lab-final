@@ -1,9 +1,9 @@
 
-
+<a href="{{route('admin.index')}}">Home</a><br>
 <form action="{{route('admin.addUsers')}}" method="post">
     @csrf
     user type: <select name="type" id="">
-        <option value="users">user</option>
+        <option value="user">user</option>
         <option value="scout">Scout</option>
     </select><br>
     Name: <input type="text" name="name" id=""><br>

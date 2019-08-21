@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'adminController@index')->name('admin.index');
         Route::get('/newUsers', 'adminController@newUsers')->name('admin.newUsers');
         Route::post('/addUsers', 'adminController@addUsers')->name('admin.addUsers');
+        Route::get('/statusActive/{id}', 'adminController@statusActive')->name('admin.statusActive');
+        Route::get('/statusBlock/{id}', 'adminController@statusBlock')->name('admin.statusBlock');
         // Route::get('/users', 'adminController@users')->name('admin.users');
         // Route::get('/users/add/{id}', 'adminController@usersAdd')->name('admin.usersAdd');
         // Route::get('/users/block/{id}', 'adminController@usersBlock')->name('admin.usersBlock');
@@ -44,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('scout')->group(function(){
         Route::get('/', 'scoutController@index')->name('scout.index');
     });
+    Route::get('/profile/{id}', 'commonController@profile')->name('profile');
     
 
 });

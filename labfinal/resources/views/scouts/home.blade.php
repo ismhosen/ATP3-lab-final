@@ -7,5 +7,5 @@
                     @csrf
                 </form>
 
-
-scout
+<br>
+<font size="5">{{Auth::user()->name}}</font>

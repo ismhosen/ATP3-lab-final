@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+use App\User;
 
 class adminController extends Controller
 {
     public function index(){
-        return view('admin.home');
+        $users=User::all();
+        return view('admin.home')->with(['users'=>$users]);
     }
     public function newUsers()
     {
@@ -15,12 +19,31 @@ class adminController extends Controller
     }
     public function addUsers(Request $req){
         // dd($req->all());
-        // User::create(array(
-        //     'name' => 'first_user',
-        //     'email' => 'first_user',
-        //     'password' => Hash::make('123456'),
-        //     'adress'    => 'my@email.com',
-        //     'type'    => 'my@email.com',
-        // ));
+        User::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => Hash::make($req->password),
+            'address'    => $req->address,
+            'type'    => $req->type,
+        ]);
+        echo "<script>";
+        echo "alert('users added')";
+        echo "</script>";
+        return redirect()->back();
+
+    }
+    public function statusActive($id){
+        $user=User::find($id);
+        $user->status="active";
+        $user->save();
+        return redirect()->back();
+
+    }
+    public function statusBlock($id){
+        $user=User::find($id);
+        $user->status="block";
+        $user->save();
+        return redirect()->back();
+
     }
 }
