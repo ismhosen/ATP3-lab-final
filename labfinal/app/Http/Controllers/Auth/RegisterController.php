@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,10 +36,10 @@ class RegisterController extends Controller
             return route('admin.index');
         }
         else if ( Auth::user()->type == 'user' ) {// do your margic here
-            return route('photographer.index');
+            return route('user.index');
         }
         else if ( Auth::user()->type == 'scout' ) {// do your margic here
-            return route('client.index');
+            return route('scout.index');
         }
         return redirect('/home');
     }
